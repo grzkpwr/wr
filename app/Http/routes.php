@@ -11,6 +11,15 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
+});*/
+
+//temporary login
+Route::get('tmp','TmpController@tmp');
+
+//user's routers group
+Route::group(['middleware' => ['tmp']], function() {
+    Route::get('/', 'SubjectController@index');
+    Route::get('/{id}', 'SubjectController@show');
 });
